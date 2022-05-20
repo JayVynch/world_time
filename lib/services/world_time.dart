@@ -1,10 +1,11 @@
 import 'package:http/http.dart';
 import 'dart:convert';
+import 'package:intl/intl.dart';
 
 class WorldTime {
-  String time = '';
-  String url;
-  String location;
+  String time ='';
+  String url ='';
+  String location ='';
 
   WorldTime({required this.location, required this.url});
 
@@ -18,11 +19,10 @@ class WorldTime {
 
       DateTime now = DateTime.parse(datetime);
       now = now.add(Duration(hours: int.parse(offset)));
-      time = now.toString();
+      time = DateFormat().add_jm().format(now);
     } catch(e){
-      print(e);
+      // print(e);
       time = 'Opps!! Sorry we can not tell you the time right now';
     }
-
   }
 }
